@@ -4,10 +4,7 @@ function changeColor() {
   document.body.style.backgroundColor = colorValue;
 }
 
-const todoListContainer = document.getElementById("todoList"); //<ul></ul>;
-// localStorage : {
-// taskList: '[{todo: 'React', isDone: false}]'
-// }
+const todoListContainer = document.getElementById("todoList"); 
 const taskList = JSON.parse(localStorage.getItem("taskList")) || [];
 
 function changeLocaleStorage() {
