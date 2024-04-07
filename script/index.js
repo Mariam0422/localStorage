@@ -82,4 +82,24 @@ const craetBtn = document.getElementById('creatBtn')
 craetBtn.addEventListener('click', createTodo)
 
 const colorPickerInput = document.getElementById('colorPicker')
-colorPickerInput.addEventListener('input', changeColor)
+colorPickerInput.addEventListener('input', changeColor);
+
+const searchInput = document.getElementById("searchTodo");
+const searchButton = document.getElementById("searchButton");
+searchButton.addEventListener("click", function() {
+   searchTasks(searchInput.value);
+})
+
+function searchTasks(searchText){
+  let lis = todoListContainer.querySelectorAll("li");
+  lis.forEach(li => {
+    const taskText = li.querySelector("p").textContent.toLowerCase();
+    if(taskText.includes(searchText.toLowerCase())){
+       li.style.display = "block";
+    }
+    else{
+      li.style.display = "none";
+    }
+    searchInput.value = "";
+  });
+}
