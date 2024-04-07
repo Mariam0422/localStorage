@@ -4,27 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css">
-    <title>localStorage</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="icon" href="https://icons.iconarchive.com/icons/gartoon-team/gartoon-apps/128/gtodo-todo-list-icon.png">
+    <title>Todo List</title>
 </head>
 <body>
-    <input type="color" id="colorPicker" oninput="changeColor()">
-    <hr>
-    <section>
+    <a href=""></a>
+    <nav>
+        <input type="color" id="colorPicker">
+
         <div>
-            <input class="input" type="text" placeholder="search ToDo"/>
-          </div>
-          <br />
-        <div>
-            <input class="input" type="text" placeholder="Your Todo" id="todoInput">
-            <button class="createBtn" onclick="createTodo()">Create Todo</button>
+            <input class="input" type="text" placeholder="Search Todo">
+            <button>&#x1F50E;&#xFE0E;</button>
         </div>
+    </nav>
     
-        <ul id="todoList">
-    
-        </ul>
-    </section>
-    <script src="./index.js">
+    <hr>    
+
+    <main>
+       
+        <section>
+            <article>
+                <input type="text" placeholder="Your Todo" id="todoInput">
+                <button id="creatBtn">Create Todo</button>
+            </article>
+
+            <p id="warningText"></p>
+
+            <ul id="todoList">
+                
+            </ul>
+        </section>    
+    </main>
+    <script src="./script/index.js">
 
     </script>
 </body>

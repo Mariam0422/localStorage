@@ -13,7 +13,8 @@ function changeLocaleStorage() {
 
 function changeToDo(e) {
   const element = e.target;
-  const parent = element.parentElement;
+  const parent = element.parentElement.parentElement;
+  
   if (e.target.className === "doneBtn") {
     const index = parent.dataset.index;
     taskList[index].isDone = !taskList[index].isDone;
@@ -26,15 +27,20 @@ function changeToDo(e) {
     renderList();
   }
 }
+
 todoListContainer.addEventListener("click", changeToDo);
+
 function renderList() {
   const liElements = taskList.map((item, index) => {
     const myClass = item.isDone ? "done" : "";
     return `
             <li data-index = ${index} class = "${myClass}">
-            <button class = "removeBtn">&#10062</button> 
-            ${item.todo}             
-             <button class = "doneBtn">&#9989</button></li>
+              <p>${item.todo}</p>           
+              <div>
+                <button class = "doneBtn">&#9989</button>
+                <button class = "removeBtn">&#10062</button>
+              </div>
+            </li>
              `;
   });
 
@@ -43,7 +49,19 @@ function renderList() {
 
 function createTodo() {
   const inputValue = document.getElementById("todoInput").value;
+  const warningtext = document.getElementById('warningText')
+  
+  if(inputValue.length === 0) {
+    warningtext.innerHTML = 'Please Type Something';
+    return
+  } else if(inputValue.length > 60) {
+    warningtext.innerHTML = 'text should be less than 60 symbols';
+    return
+  }
+
+  warningtext.innerHTML = '';
   document.getElementById("todoInput").value = "";
+
   const task = {
     isDone: false,
     todo: inputValue,
@@ -59,3 +77,9 @@ function createTodo() {
   document.body.style.backgroundColor = bgColor;
   renderList();
 })();
+                    
+const craetBtn = document.getElementById('creatBtn')
+craetBtn.addEventListener('click', createTodo)
+
+const colorPickerInput = document.getElementById('colorPicker')
+colorPickerInput.addEventListener('input', changeColor)

@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+}
+nav div {
+  display: flex;
+  gap: 5px;
+}
+nav div input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid red;
+  box-shadow: 1px 2px 3px #ccc;
+  transition: 0.3s;
+}
+nav div button {
+  padding: 9px 10px;
+  border-radius: 5px;
+  border: 1px solid red;
+  box-shadow: 1px 2px 3px #ccc;
+  transition: 0.3s;
+  font-size: larger;
+}
+nav div input:hover,
+nav div button:hover {
+  box-shadow: 1px 2px 3px #797979;
+  cursor: pointer;
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  width: 100%;
+}
+main section {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  width: 80%;
+  height: 70vh;
+  padding: 30px;
+}
+main section article {
+  display: flex;
+  justify-content: center;
+  border: 2px solid red;
+  width: 90%;
+  padding: 15px 30px;
+  border-radius: 10px;
+  gap: 10px;
+}
+main section article input {
+  width: 50%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid red;
+  box-shadow: 1px 2px 3px #ccc;
+  transition: 0.3s;
+}
+main section article input:hover {
+  box-shadow: 1px 2px 3px #797979;
+  cursor: pointer;
+}
+main section article button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid red;
+  box-shadow: 1px 2px 3px #ccc;
+  transition: 0.3s;
+}
+main section article button:hover {
+  box-shadow: 1px 2px 3px #797979;
+  cursor: pointer;
+}
+main section > p {
+  font-size: 150%;
+  color: red;
+}
+main section ul {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: 140%;
+  border: 2px solid #ffbbbb;
+  border-radius: 10px;
+  width: 90%;
+  height: 50vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 30px;
+}
+main section ul::-webkit-scrollbar {
+  border-radius: 10px;
+  background-color: #ffc0c0;
+}
+main section ul::-webkit-scrollbar-thumb {
+  background-color: #ff9e9e;
+  border-radius: 10px;
+}
+main section ul .done > p {
+  text-decoration: line-through;
+  color: green;
+}
+main section ul li {
+  border: 2px solid #eeafaf;
+  border-radius: 10px;
+  list-style: none;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  width: 100%;
+  height: auto;
+}
+main section ul li div {
+  display: flex;
+  gap: 5px;
+}
+@keyframes bgcolor {
+  50% {
+    box-shadow: 0px 4px 6px 8px #929292;
+  }
+}
+main section {
+  -webkit-animation: bgcolor 20s infinite;
+  animation: bgcolor 3s infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
