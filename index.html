@@ -23,10 +23,18 @@
 
     <main>
        
-        <section>
-            <form id="addToDoForm">
+        <section>            
+            <form id="addToDoForm"> 
+                <label class="checkbox">
+                 <input type="checkbox" id="doneTask">
+                 Tasks done
+                </label>        
                 <input type="text" placeholder="Your Todo" id="todoInput">
                 <button id="creatBtn">Create Todo</button>
+                <label class="checkbox">
+                    <input type="checkbox" id="isntDone">
+                    Unfinished tasks
+                   </label>   
             </form>       
 
             <p id="warningText"></p>
@@ -36,8 +44,6 @@
             </ul>
         </section>    
     </main>
-    <script src="./script/index.js" type="module">
-
-    </script>
+    <script src="./script/index.js" type="module"> </script>
 </body>
 </html>

@@ -53,13 +53,14 @@ main section {
 main section form {
   display: flex;
   justify-content: center;
+  align-items: center;
   border: 2px solid blue;
   width: 90%;
   padding: 15px 30px;
   border-radius: 10px;
   gap: 10px;
 }
-main section form input {
+main section form #todoInput {
   width: 50%;
   padding: 10px;
   border-radius: 5px;
@@ -67,9 +68,13 @@ main section form input {
   box-shadow: 1px 2px 3px #ccc;
   transition: 0.3s;
 }
-main section form input:hover {
+main section form #todoInput:hover {
   box-shadow: 1px 2px 3px #797979;
   cursor: pointer;
+}
+main section form .checkbox {
+  font-size: 20px;
+  color: #150333;
 }
 main section form button {
   padding: 10px;

@@ -1,5 +1,5 @@
 import { createListener } from "./helpers.js";
-import { todoListContainer,taskList, searchInput, searchButton } from "./constant.js";
+import { todoListContainer,taskList, searchInput, searchButton, doneTask, isntDone } from "./constant.js";
 
 createListener("colorPicker", "input", (e) => {
   localStorage.setItem("bgColor", e.target.value);
@@ -52,8 +52,8 @@ createListener("todoList", "click", (e) => {
   }
 })
 
-function renderList() {
-  const liElements = taskList.map((item, index) => {
+function renderList(listData = taskList) {
+  const liElements = listData.map((item, index) => {
     const myClass = item.isDone ? "done" : "";
     return `
             <li data-index = ${index} class = "${myClass}">
@@ -87,6 +87,34 @@ function searchTasks(searchText){
     searchInput.value = "";
   });
 }
+
+doneTask.addEventListener("change", (e) => {
+  if(e.target.checked){
+    console.log("clicked")
+  let arrDoneTask = taskList.filter((task) => {
+    return task.isDone
+    })
+    renderList(arrDoneTask)
+  }
+  else{
+    console.log("dont clicked");
+    renderList();
+  }
+});
+
+isntDone.addEventListener("change", (e) => {
+  if(e.target.checked){
+    console.log("clicked")
+  let filtered = taskList.filter((task) => {
+    return !task.isDone
+    })
+    renderList(filtered)
+  }
+  else{
+    console.log("dont clicked");
+    renderList();
+  }
+});
 
 (function () {
   const bgColor = localStorage.getItem("bgColor");
