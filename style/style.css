@@ -50,7 +50,7 @@ main section {
   height: 70vh;
   padding: 30px;
 }
-main section article {
+main section form {
   display: flex;
   justify-content: center;
   border: 2px solid blue;
@@ -59,7 +59,7 @@ main section article {
   border-radius: 10px;
   gap: 10px;
 }
-main section article input {
+main section form input {
   width: 50%;
   padding: 10px;
   border-radius: 5px;
@@ -67,18 +67,18 @@ main section article input {
   box-shadow: 1px 2px 3px #ccc;
   transition: 0.3s;
 }
-main section article input:hover {
+main section form input:hover {
   box-shadow: 1px 2px 3px #797979;
   cursor: pointer;
 }
-main section article button {
+main section form button {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid blue;
   box-shadow: 1px 2px 3px #ccc;
   transition: 0.3s;
 }
-main section article button:hover {
+main section form button:hover {
   box-shadow: 1px 2px 3px #797979;
   cursor: pointer;
 }

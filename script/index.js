@@ -1,17 +1,41 @@
-function changeColor() {
-  const colorValue = document.getElementById("colorPicker").value;
-  localStorage.setItem("bgColor", colorValue);
-  document.body.style.backgroundColor = colorValue;
-}
+import { createListener } from "./helpers.js";
+import { todoListContainer,taskList, searchInput, searchButton } from "./constant.js";
 
-const todoListContainer = document.getElementById("todoList"); 
-const taskList = JSON.parse(localStorage.getItem("taskList")) || [];
+createListener("colorPicker", "input", (e) => {
+  localStorage.setItem("bgColor", e.target.value);
+  document.body.style.backgroundColor = e.target.value;
+})
+
 
 function changeLocaleStorage() {
   localStorage.setItem("taskList", JSON.stringify(taskList));
 }
 
-function changeToDo(e) {
+createListener("addToDoForm", "submit", (e) => {
+  e.preventDefault();
+  const inputValue = document.getElementById("todoInput").value;
+  const warningtext = document.getElementById('warningText')
+  
+  if(inputValue.length === 0) {
+    warningtext.innerHTML = 'Please Type Something';
+    return
+  } else if(inputValue.length > 60) {
+    warningtext.innerHTML = 'text should be less than 60 symbols';
+    return
+  }
+  warningtext.innerHTML = '';
+  document.getElementById("todoInput").value = "";
+  const task = {
+    isDone: false,
+    todo: inputValue,
+  };
+  taskList.push(task);
+  changeLocaleStorage();
+  renderList();
+})
+
+
+createListener("todoList", "click", (e) => {
   const element = e.target;
   const parent = element.parentElement.parentElement;
   
@@ -26,9 +50,7 @@ function changeToDo(e) {
     changeLocaleStorage();
     renderList();
   }
-}
-
-todoListContainer.addEventListener("click", changeToDo);
+})
 
 function renderList() {
   const liElements = taskList.map((item, index) => {
@@ -45,47 +67,9 @@ function renderList() {
   });
 
   todoListContainer.innerHTML = liElements.join("");
-}
+}   
 
-function createTodo() {
-  const inputValue = document.getElementById("todoInput").value;
-  const warningtext = document.getElementById('warningText')
-  
-  if(inputValue.length === 0) {
-    warningtext.innerHTML = 'Please Type Something';
-    return
-  } else if(inputValue.length > 60) {
-    warningtext.innerHTML = 'text should be less than 60 symbols';
-    return
-  }
 
-  warningtext.innerHTML = '';
-  document.getElementById("todoInput").value = "";
-
-  const task = {
-    isDone: false,
-    todo: inputValue,
-  };
-
-  taskList.push(task);
-  changeLocaleStorage();
-  renderList();
-}
-
-(function () {
-  const bgColor = localStorage.getItem("bgColor");
-  document.body.style.backgroundColor = bgColor;
-  renderList();
-})();
-                    
-const craetBtn = document.getElementById('creatBtn')
-craetBtn.addEventListener('click', createTodo)
-
-const colorPickerInput = document.getElementById('colorPicker')
-colorPickerInput.addEventListener('input', changeColor);
-
-const searchInput = document.getElementById("searchTodo");
-const searchButton = document.getElementById("searchButton");
 searchButton.addEventListener("click", function() {
    searchTasks(searchInput.value);
 })
@@ -103,3 +87,9 @@ function searchTasks(searchText){
     searchInput.value = "";
   });
 }
+
+(function () {
+  const bgColor = localStorage.getItem("bgColor");
+  document.body.style.backgroundColor = bgColor;
+  renderList();
+})();
