@@ -1,11 +1,14 @@
 import { createListener } from "./helpers.js";
-import { todoListContainer,taskList, searchInput, searchButton, doneTask, isntDone } from "./constant.js";
+import { todoListContainer,taskList, searchInput, searchButton, doneTask, isntDone, allTodo, form } from "./constant.js";
 
 createListener("colorPicker", "input", (e) => {
   localStorage.setItem("bgColor", e.target.value);
   document.body.style.backgroundColor = e.target.value;
 })
 
+form.addEventListener('submit', (event) => {
+  event.preventDefault()
+})
 
 function changeLocaleStorage() {
   localStorage.setItem("taskList", JSON.stringify(taskList));
@@ -88,33 +91,42 @@ function searchTasks(searchText){
   });
 }
 
-doneTask.addEventListener("change", (e) => {
+createListener('doneTask', 'change', (e) => {
   if(e.target.checked){
-    console.log("clicked")
-  let arrDoneTask = taskList.filter((task) => {
-    return task.isDone
-    })
-    renderList(arrDoneTask)
-  }
-  else{
-    console.log("dont clicked");
-    renderList();
-  }
+    let arrDoneTask = taskList.filter((task) => {
+      return task.isDone
+      })
+      renderList(arrDoneTask)
+    }
+})
+
+
+
+createListener('isntDone', 'change', (e) => {
+  if(e.target.checked){
+    let filtered = taskList.filter((task) => {
+      return !task.isDone
+      })
+      renderList(filtered)
+    }
 });
 
-isntDone.addEventListener("change", (e) => {
+
+createListener('all', 'change', (e) => {
   if(e.target.checked){
-    console.log("clicked")
-  let filtered = taskList.filter((task) => {
-    return !task.isDone
-    })
-    renderList(filtered)
-  }
-  else{
-    console.log("dont clicked");
-    renderList();
-  }
+    let allTodo = []
+      for(let i = 0; i < taskList.length; i++) {
+        allTodo.push(taskList[i])
+      }
+      renderList(allTodo)
+    }
+  
 });
+
+
+
+
+
 
 (function () {
   const bgColor = localStorage.getItem("bgColor");

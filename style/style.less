@@ -8,7 +8,7 @@ nav {
     justify-content: space-between;
     padding: 10px;
     align-items: center;
-    div {
+    form {
         display: flex;
         gap: 5px;
         input {
@@ -17,6 +17,7 @@ nav {
             border: 1px solid blue;
             box-shadow:  1px 2px 3px  #ccc;
             transition: 0.3s;
+            width: 100%;
         }
         button {
             padding: 9px 10px;
@@ -46,18 +47,35 @@ main {
         flex-direction: column;
         align-items: center;
         border-radius: 10px;
-        width: 80%;
+        width: 70%;
         height: 70vh;
         padding: 30px;
+        gap: 10px;
         form {
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
             align-items: center;
             border: 2px solid blue;
             width: 90%;
             padding: 15px 30px;
             border-radius: 10px;
             gap: 10px;
+            .filter {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: end;
+                > * {
+                    text-wrap: nowrap;
+                }
+            }
+            .creat_todo {
+                width: 80%;
+                input {
+                    width: 100%;
+                
+                }
+            }
             #todoInput {
                 width: 50%;
                 padding: 10px;
@@ -70,9 +88,14 @@ main {
                     cursor: pointer;
                 }
             }
-            .checkbox{
+            .checkbox {
                 font-size: 20px;
-                color: #150333;
+                padding-left: 35px;
+                color: black;
+                &::content  {
+                    color: red;
+                }
+                
             }
             button {
                 padding: 10px;
@@ -128,6 +151,7 @@ main {
                 justify-content: space-between;
                 padding: 5px 10px;
                 width: 100%;
+                text-wrap: wrap;
                 height: auto;
                 div {
                     display: flex;
@@ -150,5 +174,35 @@ main {
     -webkit-animation-direction: alternate;
     animation-direction: alternate;
   }
+  @media only screen and (max-width: 570px) {
+    nav {
+        flex-direction: column;
+    }
+    main{
+        form {
+            flex-direction: column;
+            flex-wrap: nowrap;
+            .creat_todo {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                input, button {
+                    width: 100%;
+                }
+            }
+            .filter {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+            }
+        }
+    }
+    ul li{
+        font-size: smaller;
+    }
 
+}
   

@@ -9,18 +9,19 @@ nav {
   padding: 10px;
   align-items: center;
 }
-nav div {
+nav form {
   display: flex;
   gap: 5px;
 }
-nav div input {
+nav form input {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid blue;
   box-shadow: 1px 2px 3px #ccc;
   transition: 0.3s;
+  width: 100%;
 }
-nav div button {
+nav form button {
   padding: 9px 10px;
   border-radius: 5px;
   border: 1px solid blue;
@@ -28,8 +29,8 @@ nav div button {
   transition: 0.3s;
   font-size: larger;
 }
-nav div input:hover,
-nav div button:hover {
+nav form input:hover,
+nav form button:hover {
   box-shadow: 1px 2px 3px #797979;
   cursor: pointer;
 }
@@ -46,19 +47,35 @@ main section {
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  width: 80%;
+  width: 70%;
   height: 70vh;
   padding: 30px;
+  gap: 10px;
 }
 main section form {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   border: 2px solid blue;
   width: 90%;
   padding: 15px 30px;
   border-radius: 10px;
   gap: 10px;
+}
+main section form .filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+}
+main section form .filter > * {
+  text-wrap: nowrap;
+}
+main section form .creat_todo {
+  width: 80%;
+}
+main section form .creat_todo input {
+  width: 100%;
 }
 main section form #todoInput {
   width: 50%;
@@ -74,7 +91,11 @@ main section form #todoInput:hover {
 }
 main section form .checkbox {
   font-size: 20px;
-  color: #150333;
+  padding-left: 35px;
+  color: black;
+}
+main section form .checkbox::content {
+  color: red;
 }
 main section form button {
   padding: 10px;
@@ -127,6 +148,7 @@ main section ul li {
   justify-content: space-between;
   padding: 5px 10px;
   width: 100%;
+  text-wrap: wrap;
   height: auto;
 }
 main section ul li div {
@@ -143,4 +165,33 @@ main section {
   animation: bgcolor 3s infinite;
   -webkit-animation-direction: alternate;
   animation-direction: alternate;
+}
+@media only screen and (max-width: 570px) {
+  nav {
+    flex-direction: column;
+  }
+  main form {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  main form .creat_todo {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  main form .creat_todo input,
+  main form .creat_todo button {
+    width: 100%;
+  }
+  main form .filter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  ul li {
+    font-size: smaller;
+  }
 }
