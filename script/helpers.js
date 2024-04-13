@@ -1,5 +1,5 @@
-export const createListener = (tagId, event, callBack) => {
-    const tag = document.getElementById(tagId);
+export const createListener = (tagName, event, callBack) => {
+    const tag = document.querySelector(tagName);
     tag.addEventListener(event, callBack);
   
   }

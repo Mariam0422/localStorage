@@ -1,7 +1,7 @@
 import { createListener } from "./helpers.js";
 import { todoListContainer,taskList, searchInput, searchButton, doneTask, isntDone, allTodo, form } from "./constant.js";
 
-createListener("colorPicker", "input", (e) => {
+createListener("#colorPicker", "input", (e) => {
   localStorage.setItem("bgColor", e.target.value);
   document.body.style.backgroundColor = e.target.value;
 })
@@ -14,7 +14,7 @@ function changeLocaleStorage() {
   localStorage.setItem("taskList", JSON.stringify(taskList));
 }
 
-createListener("addToDoForm", "submit", (e) => {
+createListener("#addToDoForm", "submit", (e) => {
   e.preventDefault();
   const inputValue = document.getElementById("todoInput").value;
   const warningtext = document.getElementById('warningText')
@@ -38,7 +38,7 @@ createListener("addToDoForm", "submit", (e) => {
 })
 
 
-createListener("todoList", "click", (e) => {
+createListener("#todoList", "click", (e) => {
   const element = e.target;
   const parent = element.parentElement.parentElement;
   
@@ -91,7 +91,7 @@ function searchTasks(searchText){
   });
 }
 
-createListener('doneTask', 'change', (e) => {
+createListener('#doneTask', 'change', (e) => {
   if(e.target.checked){
     let arrDoneTask = taskList.filter((task) => {
       return task.isDone
@@ -102,7 +102,7 @@ createListener('doneTask', 'change', (e) => {
 
 
 
-createListener('isntDone', 'change', (e) => {
+createListener('#isntDone', 'change', (e) => {
   if(e.target.checked){
     let filtered = taskList.filter((task) => {
       return !task.isDone
@@ -112,7 +112,7 @@ createListener('isntDone', 'change', (e) => {
 });
 
 
-createListener('all', 'change', (e) => {
+createListener('#all', 'change', (e) => {
   if(e.target.checked){
     let allTodo = []
       for(let i = 0; i < taskList.length; i++) {
