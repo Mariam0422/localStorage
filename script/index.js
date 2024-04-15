@@ -1,5 +1,5 @@
 import { createListener } from "./helpers.js";
-import { todoListContainer,taskList, searchInput, searchButton, doneTask, isntDone, allTodo, form } from "./constant.js";
+import { todoListContainer,taskList, searchInput, searchButton, form } from "./constant.js";
 
 createListener("#colorPicker", "input", (e) => {
   localStorage.setItem("bgColor", e.target.value);
